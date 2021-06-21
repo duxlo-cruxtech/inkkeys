@@ -157,7 +157,7 @@ class Device:
             self.sendBinaryToDevice(data)
         self.imageBuffer = []
 
-    def updateDisplay(self, fullRefresh=False, timeout=5):
+    def updateDisplay(self, fullRefresh=True, timeout=5):
         with self.awaitingResponseLock:
             start = time.time()
             self.sendToDevice(CommandCode.REFRESH.value + " " + (RefreshTypeCode.FULL.value if fullRefresh else RefreshTypeCode.PARTIAL.value))

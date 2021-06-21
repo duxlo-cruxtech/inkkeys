@@ -1,7 +1,7 @@
 SERIALPORT = None #None = Auto-detect, to specify a specific serial port, you can set it to something like "/dev/ttyACM0" (Linux) or "COM1" (Windows)
 VID = 0x2341      #USB Vendor ID for a Pro Micro
 PID = 0x8037      #USB Product ID for a Pro Micro
-DEBUG = False     #More output on the command line
+DEBUG = True     #More output on the command line
 
 from inkkeys import *        #Inkkeys module
 from processchecks import *  #Functions to check for active processes and windows
@@ -33,7 +33,7 @@ print('I will try to stay connected. Press Ctrl+c to quit.')
 modes = [\
 #            {"mode": ModeOBS(), "process": "obs"}, \
 #            {"mode": ModeBlender(), "activeWindow": re.compile("^Blender")}, \
-#            {"mode": ModeGimp(), "activeWindow": re.compile("^gimp.*")}, \
+            # {"mode": ModeGimp(), "activeWindow": re.compile("^gimp.*")}, \
             {"mode": ModeFallback()} \
         ]
 
