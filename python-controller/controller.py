@@ -33,7 +33,7 @@ print('I will try to stay connected. Press Ctrl+c to quit.')
 modes = [\
 #            {"mode": ModeOBS(), "process": "obs"}, \
 #            {"mode": ModeBlender(), "activeWindow": re.compile("^Blender")}, \
-            # {"mode": ModeGimp(), "activeWindow": re.compile("^gimp.*")}, \
+            {"mode": ModeAltium(), "activeWindow": re.compile(".*Altium")}, \
             {"mode": ModeFallback()} \
         ]
 
