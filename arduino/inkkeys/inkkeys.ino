@@ -32,9 +32,9 @@ GxEPD2_290_T94 display(/*CS=*/ PIN_CS, /*DC=*/ PIN_DC, /*RST=*/ PIN_RST, /*BUSY=
 void initDisplay() {
   display.init(0, true, 2, false);
 //  display.init(115200, true, 1, false);
-//  display.writeScreenBuffer();
-//  display.refresh();
-//  display.writeScreenBufferAgain();
+  display.writeScreenBuffer();
+  display.refresh();
+  display.writeScreenBufferAgain();
   display.powerOff();
 }
 
