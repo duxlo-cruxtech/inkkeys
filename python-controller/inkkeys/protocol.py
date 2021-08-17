@@ -17,6 +17,7 @@ class CommandCode(Enum):
     LED = "L"
     REFRESH = "R"
     INFO = "I"
+    ANIMATE = "N"
 
 class RefreshTypeCode(Enum):
     PARTIAL = "p"
