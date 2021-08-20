@@ -17,19 +17,19 @@ const byte N_LED = 20; //Number of LEDs
 //Rotary encoder
 const byte PIN_ROTA = 0;
 const byte PIN_ROTB = 1;
-const byte PIN_SW1 = 9;
+const byte PIN_SW1 = 9; // Map this switch to LEDs 8 through 19
 
 const byte ROT_FACTOR = 4;         //Smallest reported step, typically one "click" on the encoder 
 const byte ROT_CIRCLE_STEPS = 64;  //Rotary steps in a full circle
 
 //Keys
-const byte PIN_SW2 = 3;
-const byte PIN_SW3 = 2;
-const byte PIN_SW4 = 4;
-const byte PIN_SW5 = 12;
-const byte PIN_SW6 = A4;
-const byte PIN_SW7 = A3;
-const byte PIN_SW8 = A2;
-const byte PIN_SW9 = A1;
+const byte PIN_SW2 = 3; // Map to LED4
+const byte PIN_SW3 = 2; // Map to LED5
+const byte PIN_SW4 = 4; // Map to LED6
+const byte PIN_SW5 = 12;// Map to LED7
+const byte PIN_SW6 = A4;// Map to LED0
+const byte PIN_SW7 = A3;// Map to LED1
+const byte PIN_SW8 = A2;// Map to LED2
+const byte PIN_SW9 = A1;// Map to LED3
 
 const int DEBOUNCE_TIME = 50; //Debounce reject interval in milliseconds
