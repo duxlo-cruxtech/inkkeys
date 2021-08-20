@@ -56,12 +56,12 @@ class ModeAltium:
         device.assignKey(KeyCode.SW7_RELEASE, [])
 
         #Button8 (right, third from top)
-        device.sendIconFor(8, "icons/dot.png")
+        device.sendIconFor(8, "icons/white.png")
         device.assignKey(KeyCode.SW8_PRESS, [])
         device.assignKey(KeyCode.SW8_RELEASE, [])
 
         #Button9 (bottom right)
-        device.sendIconFor(9, "icons/dot.png")
+        device.sendIconFor(9, "icons/white.png")
         device.assignKey(KeyCode.SW9_PRESS, []) #Not used, set to nothing.
         device.assignKey(KeyCode.SW9_RELEASE, [])
 
@@ -104,6 +104,119 @@ class ModeAltium:
     def deactivate(self, device):
         device.clearCallbacks() #Remove our callbacks if we switch to a different mode
 
+class ModeZoom:
+    jogFunction = ""    #Keeps track of the currently selected function of the jog dial
+
+    def activate(self, device):
+        device.sendTextFor("title", "Zoom", inverted=True)  #Title
+
+        #Button2 (top left) END MEETING
+        device.sendIconFor(2, "icons/arrow-up-left-circle.png")    
+        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_Q, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_Q, ActionCode.RELEASE)])
+
+        #Button3 (left, second from top) 
+        device.sendIconFor(3, "icons/camera-video.png")
+        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.RELEASE)])
+
+        #Button4 (left, third from top) 
+        device.sendIconFor(4, "icons/white.png")
+        device.assignKey(KeyCode.SW4_PRESS, [])
+        device.assignKey(KeyCode.SW4_RELEASE, [])
+
+        #Button5 (bottom left) 
+        device.sendIconFor(5, "icons/white.png")
+        device.assignKey(KeyCode.SW5_PRESS, [])
+        device.assignKey(KeyCode.SW5_RELEASE, [])
+
+        #Button6 (top right) MUTE
+        device.sendIconFor(6, "icons/mic.png")
+        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW6_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
+
+        #Button7 (right, second from top) SHARE
+        device.sendIconFor(7, "icons/aspect-ratio.png")
+        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.RELEASE)])
+
+        #Button8 (right, third from top) CHAT
+        device.sendIconFor(8, "icons/chat-dots.png")
+        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_H, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_H, ActionCode.RELEASE)])
+
+        #Button9 (bottom right) PAUSE SHARE
+        device.sendIconFor(9, "icons/aspect-ratio-fill.png")
+        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW9_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE)])
+
+        device.updateDisplay()
+
+    def poll(self, device):
+        return False #Nothing to poll
+
+    def animate(self, device):
+        device.fadeLeds() #No LED animation is used in this mode, but we call "fadeLeds" anyway to fade colors that have been set in another mode before switching
+
+    def deactivate(self, device):
+        device.clearCallbacks() #Remove our callbacks if we switch to a different mode
+
+class ModeMicrosoftTeams:
+    jogFunction = ""    #Keeps track of the currently selected function of the jog dial
+
+    def activate(self, device):
+        device.sendTextFor("title", "Teams", inverted=True)  #Title
+
+        #Button2 (top left) END MEETING
+        device.sendIconFor(2, "icons/arrow-up-left-circle.png")    
+        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_B, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_B, ActionCode.RELEASE)])
+
+        #Button3 (left, second from top) 
+        device.sendIconFor(3, "icons/camera-video.png")
+        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.PRESS)])
+        device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.RELEASE)])
+
+        #Button4 (left, third from top) 
+        device.sendIconFor(4, "icons/white.png")
+        device.assignKey(KeyCode.SW4_PRESS, [])
+        device.assignKey(KeyCode.SW4_RELEASE, [])
+
+        #Button5 (bottom left) 
+        device.sendIconFor(5, "icons/white.png")
+        device.assignKey(KeyCode.SW5_PRESS, [])
+        device.assignKey(KeyCode.SW5_RELEASE, [])
+
+        #Button6 (top right) MUTE
+        device.sendIconFor(6, "icons/mic.png")
+        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW6_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE)])
+
+        #Button7 (right, second from top) SHARE
+        device.sendIconFor(7, "icons/aspect-ratio.png")
+        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.RELEASE)])
+
+        #Button8 (right, third from top) CHAT
+        device.sendIconFor(8, "icons/chat-dots.png")
+        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_C, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_C, ActionCode.RELEASE)])
+
+        #Button9 (bottom right) 
+        device.sendIconFor(9, "icons/white.png")
+        device.assignKey(KeyCode.SW9_PRESS, [])
+        device.assignKey(KeyCode.SW9_RELEASE, [])
+
+        device.updateDisplay()
+
+    def poll(self, device):
+        return False #Nothing to poll
+
+    def animate(self, device):
+        device.fadeLeds() #No LED animation is used in this mode, but we call "fadeLeds" anyway to fade colors that have been set in another mode before switching
+
+    def deactivate(self, device):
+        device.clearCallbacks() #Remove our callbacks if we switch to a different mode
 
         ############## This mode is used as a fallback and a much more complex example than Gimp. It also uses a switchable Jog dial,
         ## Fallback ## but most of its functions give a feedback via LED. Also, we use MQTT (via a separately defined class) to get
@@ -114,28 +227,28 @@ class ModeFallback:
 
     def activate(self, device):
         device.sendTextFor("title", "Main", inverted=True) #Title
-        device.sendIconFor(2, "icons/globe.png")
+        device.sendIconFor(2, "icons/globe.png") #Firefox
         device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS)]) 
         device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE)])
-        device.sendIconFor(3, "icons/file-earmark-word.png")
-        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_W, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_W, ActionCode.RELEASE)])
-        device.sendIconFor(4, "icons/file-earmark-spreadsheet.png")
-        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW4_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.RELEASE)])
-        device.sendIconFor(5, "icons/envelope.png")
+        device.sendIconFor(3, "icons/file-earmark-smartsnippets.png") #SmartSnippets
+        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_1, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_1, ActionCode.RELEASE)])
+        device.sendIconFor(4, "icons/terminal.png") #PowerShell
+        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_2, ActionCode.PRESS)]) 
+        device.assignKey(KeyCode.SW4_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_2, ActionCode.RELEASE)])
+        device.sendIconFor(5, "icons/envelope.png") #Outlook
         device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_EMAIL_READER, ActionCode.PRESS)])
         device.assignKey(KeyCode.SW5_RELEASE, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_EMAIL_READER, ActionCode.RELEASE)])
-        device.sendIconFor(6, "icons/file-earmark-code-fill.png")
+        device.sendIconFor(6, "icons/file-earmark-code-fill.png") #Notepad++
         device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.PRESS)]) 
         device.assignKey(KeyCode.SW6_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.RELEASE)])
-        device.sendIconFor(7, "icons/file-earmark_altium.png")
+        device.sendIconFor(7, "icons/file-earmark_altium.png") #Altium
         device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS)]) 
         device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
-        device.sendIconFor(8, "icons/chat-dots.png")
+        device.sendIconFor(8, "icons/chat-dots.png") #Telegram
         device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS)]) 
         device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE)])
-        device.sendIconFor(9, "icons/calculator.png")
+        device.sendIconFor(9, "icons/calculator.png") #Calculator
         device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_CALCULATOR, ActionCode.PRESS)])
         device.assignKey(KeyCode.SW9_RELEASE, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_CALCULATOR, ActionCode.RELEASE)])
 

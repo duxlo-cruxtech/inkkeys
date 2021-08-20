@@ -93,8 +93,8 @@ class Device:
     def sendLed(self, colors):
         self.sendToDevice(CommandCode.LED.value + " " + " ".join(colors))
 
-    def sendLedAnimation(self, animation, steps, delay=0, brightness=0, r=0, g=0, b=0, iteration=1):
-        self.sendToDevice(f"{CommandCode.ANIMATE.value} {animation} {steps} {delay} {brightness} {r} {g} {b} {iteration}")
+    def sendLedAnimation(self, animation, steps, delay=0, brightness=0, g=0, r=0, b=0, iteration=1, lednumber = 0):
+        self.sendToDevice(f"{CommandCode.ANIMATE.value} {animation} {steps} {delay} {brightness} {g} {r} {b} {iteration} {lednumber}")
 
     def requestInfo(self, timeout):
         with self.awaitingResponseLock:
