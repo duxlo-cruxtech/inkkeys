@@ -18,6 +18,7 @@
 //Keys
 const byte nSW = 9;
 const byte SW[] = {PIN_SW1, PIN_SW2, PIN_SW3, PIN_SW4, PIN_SW5, PIN_SW6, PIN_SW7, PIN_SW8, PIN_SW9}; //Array of switches for easy iteration
+const byte LEDSWMAP[] = {8, 4, 5, 6, 7, 0, 1, 2, 3};
 bool pressed[] = {false, false, false, false, false, false, false, false, false}; //Last state of each key to track changes
 uint32_t swDebounce[] = {0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L};
 
@@ -70,7 +71,7 @@ void setup() {
   SingleConsumer.begin();
 
   //Show LED greeting to confirm completion
-  animateLeds(1, 800, 10, 0, (0, 0, 0), 1);
+  animateLeds(1, 800, 10, 0, (0, 0, 0), 1, 0);
   Serial.println("Ready.");
 }
 
@@ -103,6 +104,7 @@ void checkKeysAndReportChanges() {
         pressed[i] = true;
         Serial.print(i+1);
         Serial.println("p");
+        animateLeds(3, 50, 10, 0, (0, 255, 0), 2, LEDSWMAP[i]);
         executeEvents(assignments[i][0]);
       }
     } else if (state == HIGH && pressed[i]) {

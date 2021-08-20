@@ -16,10 +16,11 @@ int animation = 0;
 int brightness = 0;
 uint32_t color;
 int iteration = 0;
+int currentLEDnum = 0;
 
 void initLEDs() {
   leds.begin();
-  leds.setBrightness(100);
+  leds.setBrightness(255);
   leds.clear();
   leds.show();
   //IMPORTANT: The original hardware design cannot provide enough
@@ -45,7 +46,7 @@ uint32_t hue2rgb(int hue) {
   return r << 16 | g << 8 | b;
 }
 
-void animateLeds(int a, int s, int d, int br, uint32_t c, int i) {
+void animateLeds(int a, int s, int d, int br, uint32_t c, int i, int l) {
   // A new animation is called.
   if (a != animation) {
     leds.clear();
@@ -57,6 +58,7 @@ void animateLeds(int a, int s, int d, int br, uint32_t c, int i) {
     brightness = br;
     color = c;
     iteration = i;
+    currentLEDnum = l;
   } 
 
   if (a == animation) {
@@ -69,6 +71,7 @@ void animateLeds(int a, int s, int d, int br, uint32_t c, int i) {
       steps = 0;
       animation = 0;
       stepDelay = 0;
+      currentLEDnum = 0;
       leds.clear();
       leds.show();
     } else {
@@ -79,6 +82,9 @@ void animateLeds(int a, int s, int d, int br, uint32_t c, int i) {
           break;
         case 2:
           ledBlink();
+          break;
+        case 3:
+          ledNumBlink();
           break;
       }
     } 
@@ -101,8 +107,31 @@ void ledBlink() {
   int brightness = constrain(steps/2 - abs(i-steps/2), 0, 255);
   for (int j = 0; j < N_LED; j++) {
     leds.setPixelColor(j, color);
-    leds.setBrightness(brightness);
   }
+  leds.setBrightness(brightness);
+  leds.show();
+}
+
+// Case 3: - Blink desired LEDs
+void ledNumBlink() {
+  int i = steps - stepsRemaining;
+  int brightness = 255;
+//  int brightness = constrain(steps/2 - abs(i-steps/2), 0, 255);
+  if(currentLEDnum == 8){
+    for (int j = currentLEDnum; j < N_LED; j++) {
+      leds.setPixelColor(j, leds.Color(0,255,0));
+    }
+    brightness = 128;
+  }else{
+    for (int j = 0; j <= 7; j++) {
+      if(j == currentLEDnum && j <= 7){
+        leds.setPixelColor(j, leds.Color(0,255,0));
+      }else {
+        leds.setPixelColor(j, leds.Color(0,0,0));
+      } 
+    }
+  }
+  leds.setBrightness(brightness);
   leds.show();
 }
 
@@ -111,7 +140,7 @@ void processAnimation() {
   if (animation > 0) {
     unsigned long now = millis();
     if (now > lastUpdate+stepDelay) {
-      animateLeds(animation, steps, stepDelay, brightness, color, iteration);
+      animateLeds(animation, steps, stepDelay, brightness, color, iteration, currentLEDnum);
       lastUpdate = now;
       stepsRemaining--;
     }
