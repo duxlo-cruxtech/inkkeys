@@ -26,6 +26,8 @@ uint32_t swDebounce[] = {0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L};
 Encoder rotary(PIN_ROTA, PIN_ROTB);
 long rotaryPosition = 0;  //Last position to keep track of changes
 
+bool block_first_key_push = false;
+
 //Display
 //GxEPD2_290 display(/*CS=*/ PIN_CS, /*DC=*/ PIN_DC, /*RST=*/ PIN_RST, /*BUSY=*/ PIN_BUSY);
 GxEPD2_290_T94 display(/*CS=*/ PIN_CS, /*DC=*/ PIN_DC, /*RST=*/ PIN_RST, /*BUSY=*/ PIN_BUSY);
@@ -104,7 +106,11 @@ void checkKeysAndReportChanges() {
         pressed[i] = true;
         Serial.print(i+1);
         Serial.println("p");
-        animateLeds(3, 50, 10, 0, (0, 255, 0), 2, LEDSWMAP[i]);
+        if(block_first_key_push){
+          animateLeds(3, 50, 10, 0, (0, 255, 0), 2, LEDSWMAP[i]);
+        }else{
+          block_first_key_push = true;
+        }
         executeEvents(assignments[i][0]);
       }
     } else if (state == HIGH && pressed[i]) {
