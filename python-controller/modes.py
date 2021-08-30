@@ -41,59 +41,31 @@ class ModeAltium:
         device.assignKey(KeyCode.SW4_RELEASE, [])
 
         #Button5 (bottom left) PLACE NET
-        device.sendIconFor(5, "icons/three-dots.png")
+        device.sendIconFor(5, "icons/place_net.png")
         device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW5_RELEASE, [])
 
-        #Button6 (top right) PLACE TRACK
-        device.sendIconFor(6, "icons/option.png")
+        #Button6 (top right) PLACE TEXT or INTERACTIVE ROUTING
+        device.sendIconFor(6, "icons/textarea-t.png")
         device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW6_RELEASE, [])
 
         #Button7 (right, second from top) CREATE POLYGON FROM SELECTED PRIMITIVES
-        device.sendIconFor(7, "icons/bounding-box-circles.png")
-        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
-        device.assignKey(KeyCode.SW7_RELEASE, [])
+        device.sendIconFor(7, "icons/create_polygon_from_selected.png")
+        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.RELEASE)])
+        device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
 
-        #Button8 (right, third from top)
-        device.sendIconFor(8, "icons/white.png")
-        device.assignKey(KeyCode.SW8_PRESS, [])
-        device.assignKey(KeyCode.SW8_RELEASE, [])
+        #Button8 (right, third from top) REPOUR ALL POLYGONS 
+        device.sendIconFor(8, "icons/repour_polygon.png")
+        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
+        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
 
-        #Button9 (bottom right)
-        device.sendIconFor(9, "icons/white.png")
-        device.assignKey(KeyCode.SW9_PRESS, []) #Not used, set to nothing.
+        #Button9 (bottom right) PLACE POLYGON
+        device.sendIconFor(9, "icons/bounding-box-circles.png")
+        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW9_RELEASE, [])
 
         device.updateDisplay()
-        # self.jogFunction = ""
-
-        # #This toggles the jog function and sets up key assignments and the label for the jog dial. It calls "updateDiplay()" if update is not explicitly set to False (for example if you need to update more parts of the display before updating it.)
-        # def toggleJogFunction(update=True):
-        #     if self.jogFunction == "size":  #Tool opacity in GIMP
-        #         device.clearCallback(KeyCode.JOG)
-        #         device.sendTextFor(1, "Tool opacity")
-        #         device.assignKey(KeyCode.JOG_CW, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_COMMA), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE)])
-        #         device.assignKey(KeyCode.JOG_CCW, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_PERIOD), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_SHIFT, ActionCode.RELEASE)])
-        #         self.jogFunction = "opacity"
-        #         if update:
-        #             device.updateDisplay()
-        #     else:                            #Tool size in GIMP
-        #         device.clearCallback(KeyCode.JOG)
-        #         device.sendTextFor(1, "Tool size")
-        #         device.assignKey(KeyCode.JOG_CW, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_BRACE)])
-        #         device.assignKey(KeyCode.JOG_CCW, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_RIGHT_BRACE)])
-        #         self.jogFunction = "size"
-        #         if update:
-        #             device.updateDisplay()
-
-
-        # #Button 1 / jog dial press
-        # device.registerCallback(toggleJogFunction, KeyCode.JOG_PRESS) #Call "toggleJogFunction" if the dial is pressed
-        # device.assignKey(KeyCode.SW1_PRESS, [])                       #We do not send a key stroke when the dial is pressed, instead we use the callback.
-        # device.assignKey(KeyCode.SW1_RELEASE, [])                     #We still need to overwrite the assignment to clear previously set assignments.
-        # toggleJogFunction(False)    #We call toggleJogFunction to initially set the label and assignment
-        # device.updateDisplay()      #Everything has been sent to the display. Time to refresh it.
 
     def poll(self, device):
         return False #Nothing to poll
@@ -218,43 +190,113 @@ class ModeMicrosoftTeams:
     def deactivate(self, device):
         device.clearCallbacks() #Remove our callbacks if we switch to a different mode
 
-        ############## This mode is used as a fallback and a much more complex example than Gimp. It also uses a switchable Jog dial,
-        ## Fallback ## but most of its functions give a feedback via LED. Also, we use MQTT (via a separately defined class) to get
-        ############## data from a CO2 sensor and control a light (both including feedback)
+class ModeTest:
+    jogFunction = ""    #Keeps track of the currently selected function of the jog dial
+
+    def activate(self, device):
+        device.sendTextFor("title", "Test", inverted=True)  #Title
+        device.sendTextFor(1, "1", inverted=False)
+        device.sendTextFor(2, " SW2\n SW2-2", inverted=False)
+        device.sendTextFor(3, " SW3", inverted=False)
+        device.sendTextFor(4, " SW4", inverted=False)
+        device.sendTextFor(5, " SW5", inverted=False)
+        device.sendTextFor(6, "SW6 ", inverted=False)
+        device.sendTextFor(7, "SW7 ", inverted=False)
+        device.sendTextFor(8, "SW8 ", inverted=False)
+        device.sendTextFor(9, "SW9 ", inverted=False)
+
+        device.updateDisplay()
+
+    def poll(self, device):
+        return False #Nothing to poll
+
+    def animate(self, device):
+        device.fadeLeds() #No LED animation is used in this mode, but we call "fadeLeds" anyway to fade colors that have been set in another mode before switching
+
+    def deactivate(self, device):
+        device.clearCallbacks() #Remove our callbacks if we switch to a different mode
+
+        ############## 
+        ## Fallback ## This mode is used as a fallback and a more complex example. It also uses a switchable Jog dial.
+        ############## 
 
 class ModeFallback:
     jogFunction = ""    #Keeps track of the currently selected function of the jog dial
 
     def activate(self, device):
-        device.sendTextFor("title", "Main", inverted=True) #Title
-        device.sendIconFor(2, "icons/globe.png") #Firefox
-        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE)])
-        device.sendIconFor(3, "icons/file-earmark-smartsnippets.png") #SmartSnippets
-        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_1, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_1, ActionCode.RELEASE)])
-        device.sendIconFor(4, "icons/terminal.png") #PowerShell
-        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_2, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW4_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_2, ActionCode.RELEASE)])
-        device.sendIconFor(5, "icons/envelope.png") #Outlook
-        device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_EMAIL_READER, ActionCode.PRESS)])
-        device.assignKey(KeyCode.SW5_RELEASE, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_EMAIL_READER, ActionCode.RELEASE)])
-        device.sendIconFor(6, "icons/file-earmark-code-fill.png") #Notepad++
-        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW6_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.RELEASE)])
-        device.sendIconFor(7, "icons/file-earmark_altium.png") #Altium
-        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
-        device.sendIconFor(8, "icons/chat-dots.png") #Telegram
-        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE)])
-        device.sendIconFor(9, "icons/calculator.png") #Calculator
-        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_CALCULATOR, ActionCode.PRESS)])
-        device.assignKey(KeyCode.SW9_RELEASE, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_CALCULATOR, ActionCode.RELEASE)])
+        self.jogFunction = "Menu1"
 
-        ### All set, let's update the display ###
+        #This toggles the jog function and sets up key assignments and the label for the jog dial. It calls "updateDiplay()" if update is not explicitly set to False (for example if you need to update more parts of the display before updating it.)
+        def toggleJogFunction(update=True):
+            if self.jogFunction == "Menu1":  
+                device.clearCallback(KeyCode.JOG)
+                device.sendTextFor(1, "Next Menu")
+                device.sendTextFor("title", "Menu 1", inverted=True) #Title
+                device.sendIconFor(2, "icons/globe.png") #Firefox
+                device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE)])
+                device.sendIconFor(3, "icons/file-earmark-smartsnippets.png") #SmartSnippets
+                device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_1, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_1, ActionCode.RELEASE)])
+                device.sendIconFor(4, "icons/terminal.png") #PowerShell
+                device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_2, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW4_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_2, ActionCode.RELEASE)])
+                device.sendIconFor(5, "icons/envelope.png") #Outlook
+                device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_EMAIL_READER, ActionCode.PRESS)])
+                device.assignKey(KeyCode.SW5_RELEASE, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_EMAIL_READER, ActionCode.RELEASE)])
+                device.sendIconFor(6, "icons/file-earmark-code-fill.png") #Notepad++
+                device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW6_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.RELEASE)])
+                device.sendIconFor(7, "icons/file-earmark_altium.png") #Altium
+                device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
+                device.sendIconFor(8, "icons/chat-dots.png") #Telegram
+                device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE)])
+                device.sendIconFor(9, "icons/calculator.png") #Calculator
+                device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_CALCULATOR, ActionCode.PRESS)])
+                device.assignKey(KeyCode.SW9_RELEASE, [event(DeviceCode.CONSUMER, ConsumerKeycode.CONSUMER_CALCULATOR, ActionCode.RELEASE)])
+                self.jogFunction = "Menu2"
+                if update:
+                    device.updateDisplay()
+            else:                            #Tool size in GIMP
+                device.clearCallback(KeyCode.JOG)
+                device.sendTextFor(1, "Next Menu")
+                device.sendTextFor("title", "Menu 2", inverted=True) #Title
+                device.sendIconFor(2, "icons/power.png") #Power Off
+                device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F4, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F4, ActionCode.RELEASE)])
+                device.sendTextFor(3, " Sublime", inverted=False) #Sublime
+                device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW3_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.RELEASE)])
+                device.sendTextFor(4, " Joulescope", inverted=False) #JS
+                device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_J, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW4_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_J, ActionCode.RELEASE)])
+                device.sendTextFor(5, " Tera Term", inverted=False) #Tera Term
+                device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_3, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW5_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_3, ActionCode.RELEASE)])
+                device.sendTextFor(6, " Allegro", inverted=False) #Allegro
+                device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_4, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW6_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_4, ActionCode.RELEASE)])
+                device.sendTextFor(7, " FreeCAD", inverted=False) #FreeCAD
+                device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_5, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_5, ActionCode.RELEASE)])
+                device.sendTextFor(8, " nRF Connect", inverted=False) #nRF Connect
+                device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_6, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_6, ActionCode.RELEASE)])
+                device.sendTextFor(9, " Photoshop", inverted=False) #Photoshop
+                device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_7, ActionCode.PRESS)]) 
+                device.assignKey(KeyCode.SW9_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_ALT, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_7, ActionCode.RELEASE)])
+                self.jogFunction = "Menu1"
+                if update:
+                    device.updateDisplay()
 
-        device.updateDisplay()
+        #Button 1 / jog dial press
+        device.registerCallback(toggleJogFunction, KeyCode.JOG_PRESS)   #Call "toggleJogFunction" if the dial is pressed
+        device.assignKey(KeyCode.SW1_PRESS, [])                         #We do not send a key stroke when the dial is pressed, instead we use the callback.
+        device.assignKey(KeyCode.SW1_RELEASE, [])                       #We still need to overwrite the assignment to clear previously set assignments.
+        toggleJogFunction(False)                                        #We call toggleJogFunction to initially set the label and assignment
+        device.updateDisplay()                                          #Everything has been sent to the display. Time to refresh it.
 
     def poll(self, device):
         return False #No polling required

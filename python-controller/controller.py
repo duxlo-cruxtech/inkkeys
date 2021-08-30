@@ -36,6 +36,7 @@ modes = [\
             {"mode": ModeAltium(), "activeWindow": re.compile(".*Altium")}, \
             {"mode": ModeZoom(), "activeWindow": re.compile(".*Zoom")}, \
             {"mode": ModeMicrosoftTeams(), "activeWindow": re.compile(".*Microsoft Teams")}, \
+            {"mode": ModeTest(), "activeWindow": re.compile("test - Google Search — Mozilla Firefox")}, \
             {"mode": ModeFallback()} \
         ]
 
