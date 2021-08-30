@@ -105,10 +105,14 @@ void defaultAssignment() {
     }
   }
   //Left click on rotary press
-  assignments[0][0][0].deviceAndType = DEVICE_MOUSE | TYPE_PRESS;
-  assignments[0][0][0].keycodeOrDelay = (MOUSEAXIS_BUTTON << 8) | MOUSE_LEFT;
-  assignments[0][1][0].deviceAndType = DEVICE_MOUSE | TYPE_RELEASE;
-  assignments[0][1][0].keycodeOrDelay = (MOUSEAXIS_BUTTON << 8) | MOUSE_LEFT;
+//  assignments[0][0][0].deviceAndType = DEVICE_MOUSE | TYPE_PRESS;
+//  assignments[0][0][0].keycodeOrDelay = (MOUSEAXIS_BUTTON << 8) | MOUSE_LEFT;
+//  assignments[0][1][0].deviceAndType = DEVICE_MOUSE | TYPE_RELEASE;
+//  assignments[0][1][0].keycodeOrDelay = (MOUSEAXIS_BUTTON << 8) | MOUSE_LEFT;
+  assignments[0][0][0].deviceAndType = DEVICE_KEYBOARD | TYPE_PRESS;
+  assignments[0][0][0].keycodeOrDelay = KEY_F9;
+  assignments[0][1][0].deviceAndType = DEVICE_KEYBOARD | TYPE_RELEASE;
+  assignments[0][1][0].keycodeOrDelay = KEY_F9;
   for (byte key = 1; key < 9; key++) {
     //F1 to F8 on buttons
     assignments[key][0][0].deviceAndType = DEVICE_KEYBOARD | TYPE_PRESS;
