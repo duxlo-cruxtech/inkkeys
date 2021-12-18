@@ -25,45 +25,45 @@ class ModeCreo:
     def activate(self, device):
         device.sendTextFor("title", "Creo", inverted=True)  #Title
 
-        #Button2 (top left) mdo model display normal
-        device.sendTextFor(2, " model\n display normal", inverted=False)  
-        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.RELEASE)]) 
+        #Button2 (top left) Make strong dimension
+        device.sendTextFor(2, " Make strong\n dimension", inverted=False)  
+        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_Z, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_Z, ActionCode.RELEASE)]) 
         device.assignKey(KeyCode.SW2_RELEASE, [])
 
-        #Button3 (left, second from top) mdi model display high
-        device.sendTextFor(3, " model\n display high", inverted=False) 
-        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.RELEASE)]) 
+        #Button3 (left, second from top) Equal
+        device.sendTextFor(3, " Equal", inverted=False) 
+        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_Q, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_Q, ActionCode.RELEASE)]) 
         device.assignKey(KeyCode.SW3_RELEASE, [])
 
-        #Button4 (left, third from top) mk mapkey
-        device.sendTextFor(4, " mapkey", inverted=False) 
-        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_K, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_K, ActionCode.RELEASE)])
+        #Button4 (left, third from top) Line
+        device.sendTextFor(4, " Line", inverted=False) 
+        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW4_RELEASE, [])
 
-        #Button5 (bottom left) mp generate mass properties
-        device.sendTextFor(5, " generate\n mass properties", inverted=False) 
-        device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
+        #Button5 (bottom left) Offset
+        device.sendTextFor(5, " Offset", inverted=False) 
+        device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW5_RELEASE, [])
 
-        #Button6 (top right) tp preselect parts
-        device.sendTextFor(6, " preselect\n parts", inverted=False) 
-        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
+        #Button6 (top right) Horizontal
+        device.sendTextFor(6, " Horizontal", inverted=False) 
+        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_H, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_H, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_R, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_R, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW6_RELEASE, [])
 
-        #Button7 (right, second from top) di measure -diameter
-        device.sendTextFor(7, " measure\n diameter", inverted=False) 
-        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.RELEASE)])
+        #Button7 (right, second from top) Parallel
+        device.sendTextFor(7, " Parallel", inverted=False) 
+        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_L, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_L, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_L, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_L, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW7_RELEASE, [])
 
-        #Button8 (right, third from top) estp export stp 
-        device.sendTextFor(8, " export\n stp", inverted=False) 
-        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.RELEASE)])
-        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
+        #Button8 (right, third from top) Grid On, Snap On
+        device.sendTextFor(8, " Grid On\n Snap On", inverted=False) 
+        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.RELEASE)])
+        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.RELEASE)])
 
-        #Button9 (bottom right) gp sketch constraint - parallel
-        device.sendTextFor(9, " sketch constraint\n parallel", inverted=False) 
-        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
-        device.assignKey(KeyCode.SW9_RELEASE, [])
+        #Button9 (bottom right) Grid Off, Snap Off
+        device.sendTextFor(9, " Grid Off\n Snap Off", inverted=False) 
+        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.RELEASE)])
+        device.assignKey(KeyCode.SW9_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_F, ActionCode.RELEASE)])
 
         device.updateDisplay()
 
