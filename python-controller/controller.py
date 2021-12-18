@@ -33,7 +33,7 @@ print('I will try to stay connected. Press Ctrl+c to quit.')
 modes = [\
 #            {"mode": ModeOBS(), "process": "obs"}, \
 #            {"mode": ModeBlender(), "activeWindow": re.compile("^Blender")}, \
-            {"mode": ModeAltium(), "activeWindow": re.compile(".*Altium")}, \
+            {"mode": ModeCreo(), "activeWindow": re.compile(".*Creo Parametric")}, \
             {"mode": ModeZoom(), "activeWindow": re.compile(".*Zoom")}, \
             {"mode": ModeMicrosoftTeams(), "activeWindow": re.compile(".*Microsoft Teams")}, \
             {"mode": ModeTest(), "activeWindow": re.compile("test - Google Search — Mozilla Firefox")}, \

@@ -19,50 +19,50 @@ from math import ceil, floor
 from PIL import Image, ImageDraw, ImageFont
 from colorsys import hsv_to_rgb
 
-class ModeAltium:
+class ModeCreo:
     jogFunction = ""    #Keeps track of the currently selected function of the jog dial
 
     def activate(self, device):
-        device.sendTextFor("title", "Altium", inverted=True)  #Title
+        device.sendTextFor("title", "Creo", inverted=True)  #Title
 
-        #Button2 (top left) WIRE
-        device.sendIconFor(2, "icons/slash.png")    
-        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_W, ActionCode.PRESS)]) 
-        device.assignKey(KeyCode.SW2_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_LEFT_CTRL, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_W, ActionCode.RELEASE)])
+        #Button2 (top left) mdo model display normal
+        device.sendTextFor(2, " model\n display normal", inverted=False)  
+        device.assignKey(KeyCode.SW2_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_O, ActionCode.RELEASE)]) 
+        device.assignKey(KeyCode.SW2_RELEASE, [])
 
-        #Button3 (left, second from top) MOVE
-        device.sendIconFor(3, "icons/arrows-move.png")
-        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE)])
+        #Button3 (left, second from top) mdi model display high
+        device.sendTextFor(3, " model\n display high", inverted=False) 
+        device.assignKey(KeyCode.SW3_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.RELEASE)]) 
         device.assignKey(KeyCode.SW3_RELEASE, [])
 
-        #Button4 (left, third from top) DELETE
-        device.sendIconFor(4, "icons/trash.png")
-        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE)])
+        #Button4 (left, third from top) mk mapkey
+        device.sendTextFor(4, " mapkey", inverted=False) 
+        device.assignKey(KeyCode.SW4_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_K, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_K, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW4_RELEASE, [])
 
-        #Button5 (bottom left) PLACE NET
-        device.sendIconFor(5, "icons/place_net.png")
-        device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_N, ActionCode.RELEASE)])
+        #Button5 (bottom left) mp generate mass properties
+        device.sendTextFor(5, " generate\n mass properties", inverted=False) 
+        device.assignKey(KeyCode.SW5_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_M, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW5_RELEASE, [])
 
-        #Button6 (top right) PLACE TEXT or INTERACTIVE ROUTING
-        device.sendIconFor(6, "icons/textarea-t.png")
-        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE)])
+        #Button6 (top right) tp preselect parts
+        device.sendTextFor(6, " preselect\n parts", inverted=False) 
+        device.assignKey(KeyCode.SW6_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW6_RELEASE, [])
 
-        #Button7 (right, second from top) CREATE POLYGON FROM SELECTED PRIMITIVES
-        device.sendIconFor(7, "icons/create_polygon_from_selected.png")
-        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_V, ActionCode.RELEASE)])
-        device.assignKey(KeyCode.SW7_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
+        #Button7 (right, second from top) di measure -diameter
+        device.sendTextFor(7, " measure\n diameter", inverted=False) 
+        device.assignKey(KeyCode.SW7_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_D, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_I, ActionCode.RELEASE)])
+        device.assignKey(KeyCode.SW7_RELEASE, [])
 
-        #Button8 (right, third from top) REPOUR ALL POLYGONS 
-        device.sendIconFor(8, "icons/repour_polygon.png")
-        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
-        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_A, ActionCode.RELEASE)])
+        #Button8 (right, third from top) estp export stp 
+        device.sendTextFor(8, " export\n stp", inverted=False) 
+        device.assignKey(KeyCode.SW8_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_E, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_S, ActionCode.RELEASE)])
+        device.assignKey(KeyCode.SW8_RELEASE, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_T, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
 
-        #Button9 (bottom right) PLACE POLYGON
-        device.sendIconFor(9, "icons/bounding-box-circles.png")
-        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE)])
+        #Button9 (bottom right) gp sketch constraint - parallel
+        device.sendTextFor(9, " sketch constraint\n parallel", inverted=False) 
+        device.assignKey(KeyCode.SW9_PRESS, [event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_G, ActionCode.RELEASE), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.PRESS), event(DeviceCode.KEYBOARD, KeyboardKeycode.KEY_P, ActionCode.RELEASE)])
         device.assignKey(KeyCode.SW9_RELEASE, [])
 
         device.updateDisplay()
